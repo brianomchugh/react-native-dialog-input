@@ -51,6 +51,8 @@ class DialogInput extends PureComponent{
     const textProps = this.props.textInputProps || null;
     const modalStyleProps = this.props.modalStyle || {};
     const dialogStyleProps = this.props.dialogStyle || {};
+    const titleStyleProps = this.props.titleStyleProps || {};
+    const messageStyleProps = this.props.messageStyleProps || {};
     const placeholderTextColor = this.props.placeholderTextColor
     const animationType = this.props.animationType || 'fade';
     let cancelText = this.props.cancelText || 'Cancel';
@@ -68,8 +70,8 @@ class DialogInput extends PureComponent{
           <TouchableOpacity style={styles.container} activeOpacity={1} onPress={this.handleOnCloseDialog}>
             <View style={[styles.modal_container, {...dialogStyleProps}]} >
               <View style={styles.modal_body} >
-                <Text style={styles.title_modal}>{title}</Text>
-                <Text style={[this.props.message ? styles.message_modal : {height:0} ]}>{this.props.message}</Text>
+                <Text style={[styles.title_modal, {...titleStyleProps}]}>{title}</Text>
+                <Text style={[this.props.message ? styles.message_modal : {height:0}, {...messageStyleProps}]}>{this.props.message}</Text>
                 <TextInput style={styles.input_container}
                   autoCorrect={(textProps && textProps.autoCorrect==false)?false:true}
                   autoCapitalize={(textProps && textProps.autoCapitalize)?textProps.autoCapitalize:'none'}
